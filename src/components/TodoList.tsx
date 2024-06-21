@@ -7,6 +7,7 @@ import {
   CardActions,
   Grid,
   Button,
+  Stack,
 } from "@mui/material";
 import { useTodoContext } from "@/context/TodoContext";
 import { fetchAllTodos } from "@/api/backend";
@@ -15,6 +16,7 @@ import { isError } from "@/utils/TodoUtils";
 import { TodoListSkeleton } from "./TodoListSkeleton";
 import { useRouter } from "next/navigation";
 import { ErrorSnackbar } from "./ErrorSnackbar";
+import { Check } from "@mui/icons-material";
 
 const REFETCH_INTERVAL = 60000; // 1 minute
 
@@ -74,13 +76,16 @@ const TodoList = () => {
 
   return (
     <Container sx={{ padding: 2 }}>
-      <Typography variant="h2">Todos</Typography>
+      <Typography variant="h4">{"Todos"}</Typography>
       <Grid container spacing={4}>
-        {todos.map(({ id, description, name }) => (
+        {todos.map(({ id, description, name, done }) => (
           <Grid item xs={12} sm={6} md={3} key={id}>
             <Card>
               <CardContent>
-                <Typography variant="h5">{name}</Typography>
+                <Stack direction="row" justifyContent="space-between">
+                  <Typography variant="h5">{name}</Typography>
+                  {done ? <Check color="success" /> : null}
+                </Stack>
                 <Typography variant="body1" color="GrayText">
                   {description}
                 </Typography>

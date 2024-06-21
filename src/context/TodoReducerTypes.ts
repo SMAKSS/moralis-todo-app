@@ -13,6 +13,10 @@ export interface TodoState {
    * The timestamp when the todos were last fetched.
    */
   lastFetched: number | null;
+  /**
+   * A boolean indicating whether all todos have been fetched.
+   */
+  allTodosFetched: boolean;
 }
 
 export enum TodoActionTypes {

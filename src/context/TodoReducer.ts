@@ -13,6 +13,10 @@ export const initialState: TodoState = {
    * The timestamp when the todos were last fetched.
    */
   lastFetched: null,
+  /**
+   * A boolean indicating whether all todos have been fetched.
+   */
+  allTodosFetched: false,
 };
 
 /**
@@ -29,15 +33,22 @@ export function todoReducer(state: TodoState, action: TodoAction): TodoState {
         todos: action.payload,
         error: null,
         lastFetched: Date.now(),
+        allTodosFetched: true,
       };
-    case TodoActionTypes.UPDATE_TODO:
+    case TodoActionTypes.UPDATE_TODO: {
+      const todoExists = state.todos.some(
+        (todo) => todo.id === action.payload.id
+      );
       return {
         ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload.id ? action.payload : todo
-        ),
+        todos: todoExists
+          ? state.todos.map((todo) =>
+              todo.id === action.payload.id ? action.payload : todo
+            )
+          : [...state.todos, action.payload],
         error: null,
       };
+    }
     case TodoActionTypes.DELETE_TODO:
       return {
         ...state,
