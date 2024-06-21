@@ -17,6 +17,10 @@ export interface TodoState {
    * A boolean indicating whether all todos have been fetched.
    */
   allTodosFetched: boolean;
+  /**
+   * The success message.
+   */
+  successMessage: string | null;
 }
 
 export enum TodoActionTypes {
@@ -36,10 +40,20 @@ export enum TodoActionTypes {
    * Set an error message.
    */
   SET_ERROR = "SET_ERROR",
+  /**
+   * Set a success message.
+   */
+  SET_MESSAGE = "SET_MESSAGE",
+  /**
+   * Clear the error message.
+   */
+  CLEAR_MESSAGE = "CLEAR_MESSAGE",
 }
 
 export type TodoAction =
   | { type: TodoActionTypes.SET_TODOS; payload: Todo[] }
   | { type: TodoActionTypes.UPDATE_TODO; payload: Todo }
   | { type: TodoActionTypes.DELETE_TODO; payload: number }
-  | { type: TodoActionTypes.SET_ERROR; payload: string };
+  | { type: TodoActionTypes.SET_ERROR; payload: string }
+  | { type: TodoActionTypes.SET_MESSAGE; payload: string }
+  | { type: TodoActionTypes.CLEAR_MESSAGE };

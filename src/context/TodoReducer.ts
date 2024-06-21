@@ -17,6 +17,10 @@ export const initialState: TodoState = {
    * A boolean indicating whether all todos have been fetched.
    */
   allTodosFetched: false,
+  /**
+   * The success message.
+   */
+  successMessage: null,
 };
 
 /**
@@ -57,6 +61,10 @@ export function todoReducer(state: TodoState, action: TodoAction): TodoState {
       };
     case TodoActionTypes.SET_ERROR:
       return { ...state, error: action.payload };
+    case TodoActionTypes.SET_MESSAGE:
+      return { ...state, successMessage: action.payload };
+    case TodoActionTypes.CLEAR_MESSAGE:
+      return { ...state, successMessage: null };
     default:
       return state;
   }

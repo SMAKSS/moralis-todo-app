@@ -1,14 +1,8 @@
-import { Inter } from 'next/font/google';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { Container } from "@mui/material";
 
-const inter = Inter({ subsets: ['latin'] });
-
-const ItemList = dynamic(() => import('../components/TodoList'), {
-  ssr: false,
-});
-
-const ItemDetail = dynamic(() => import('../components/TodoDetail'), {
+const ItemList = dynamic(() => import("../components/TodoList"), {
   ssr: false,
 });
 
@@ -17,10 +11,9 @@ const IndexPage = () => {
   const { id } = router.query;
 
   return (
-    <>
-      {!id && <ItemList />}
-      {id && <ItemDetail />}
-    </>
+    <Container>
+      <ItemList />
+    </Container>
   );
 };
 
