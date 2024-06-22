@@ -14,10 +14,10 @@ import { fetchAllTodos } from "@/api/backend";
 import { TodoActionTypes } from "@/context/TodoReducerTypes";
 import { isError } from "@/utils/TodoUtils";
 import { TodoListSkeleton } from "./TodoListSkeleton";
-import { useRouter } from "next/navigation";
 import { ErrorSnackbar } from "./ErrorSnackbar";
 import { Check } from "@mui/icons-material";
 import { InfoSnackbar } from "./InfoSnackbar";
+import { useRouter } from "next/router";
 
 const REFETCH_INTERVAL = 60000; // 1 minute
 
