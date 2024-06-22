@@ -27,8 +27,8 @@ interface TodoProviderProps {
 
 /**
  * Provides the Todo context to its children.
- * @param {TodoProviderProps} param0 - Props containing the children components.
- * @returns {JSX.Element} The TodoProvider component.
+ * @param {TodoProviderProps} props - The props of the TodoProvider.
+ * @returns {JSX.Element} The Todo context provider.
  */
 export function TodoProvider(props: TodoProviderProps): JSX.Element {
   const { children } = props;

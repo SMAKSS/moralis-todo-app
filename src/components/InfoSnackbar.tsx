@@ -1,6 +1,7 @@
 import { useTodoContext } from "@/context/TodoContext";
 import { TodoActionTypes } from "@/context/TodoReducerTypes";
-import { Snackbar } from "@mui/material";
+import { Snackbar, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface InfoSnackbarProps {
   /**
@@ -26,6 +27,16 @@ export const InfoSnackbar = (props: InfoSnackbarProps) => {
       autoHideDuration={6000}
       onClose={handleSnackbarClose}
       message={message}
+      action={
+        <IconButton
+          size="small"
+          aria-label="close"
+          color="inherit"
+          onClick={handleSnackbarClose}
+        >
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      }
     />
   );
 };
