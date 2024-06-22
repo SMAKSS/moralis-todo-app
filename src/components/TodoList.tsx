@@ -8,7 +8,6 @@ import {
   Grid,
   Button,
   Stack,
-  Snackbar,
 } from "@mui/material";
 import { useTodoContext } from "@/context/TodoContext";
 import { fetchAllTodos } from "@/api/backend";
